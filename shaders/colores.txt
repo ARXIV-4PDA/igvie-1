@@ -1,0 +1,10 @@
+#version 330 core
+out vec4 color;
+in vec4 col;
+in vec2 tex;
+uniform vec4 ourColor;
+uniform sampler2D ourTexture;
+
+void main(){
+    color = texture(ourTexture,vec2( tex.x+ourColor.x,tex.y+ourColor.y));
+    };

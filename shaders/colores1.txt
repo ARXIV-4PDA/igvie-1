@@ -1,0 +1,13 @@
+#version 330 core
+out vec4 color;
+in vec3 normal;
+in vec2 tex;
+
+uniform sampler2D ourTexture0;
+
+void main(){
+    vec4 color_n=texture(ourTexture0,tex);
+        if(color_n.a<0.1f)
+        discard;
+        color=color_n;
+    };

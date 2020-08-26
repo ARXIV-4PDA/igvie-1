@@ -1,0 +1,22 @@
+#version 330 core
+layout (location = 0) in vec3 position;
+layout (location = 1) in vec3 Normal;
+layout (location = 2) in vec2 texKord;
+
+out vec2 tex;
+uniform mat4 model;
+uniform mat4 projection;
+uniform mat4 view;
+
+uniform vec2 size_symbol;
+uniform vec4 symbol[100];
+
+void main(){
+        mat4 model_=model;
+        model_[3]=vec4(size_symbol.x*gl_InstanceID+model[3][0],model[3][1],model[3][2],model[3][3]);
+        gl_Position =projection*view*model_*vec4(position, 1.0f);
+        vec4 ourColor0=symbol[gl_InstanceID];
+        float iks=(texKord.x-ourColor0.x)*ourColor0[2];
+        float yik=(texKord.y-ourColor0.y)*ourColor0[3];
+        tex=vec2(iks,yik);
+}

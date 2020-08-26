@@ -1,0 +1,15 @@
+#version 330 core
+layout (location = 0) in vec3 position;
+layout (location = 1) in vec3 COLIN;
+layout (location = 2) in vec2 texKord;
+layout (location = 3) in mat4 instanceMatrix;
+
+out vec4 col;
+out vec2 tex;
+uniform mat4 model;
+void main()
+{
+    gl_Position = instanceMatrix*vec4(position, 1.0f);
+	col=vec4(COLIN, 1.0f);
+	tex=texKord;
+}

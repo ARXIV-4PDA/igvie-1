@@ -1,0 +1,12 @@
+#version 330 core
+out vec4 color;
+in vec3 normal;
+in vec2 tex;
+
+uniform vec3      new_color;
+uniform sampler2D ourTexture0;
+void main(){
+
+    vec4 color_n=normalize(texture(ourTexture0,tex));
+    color=vec4(new_color*color_n.xyz,1.0f);
+    };
